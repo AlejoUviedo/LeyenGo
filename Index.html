@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panadería El Sol - Pedidos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <h1>🥐 Panadería "El Sol"</h1>
+    <div class="role-selector">
+      <button id="btn-client" class="active" onclick="switchView('client')">Vista Cliente</button>
+      <button id="btn-merchant" onclick="switchView('merchant')">Vista Comercio</button>
+    </div>
+  </header>
+
+  <main class="app-content">
+    
+    <!-- ================= VISTA CLIENTE ================= -->
+    <div id="view-client" class="view-section">
+      <div class="client-layout">
+        
+        <!-- Catálogo de productos -->
+        <div class="products-section">
+          <h2>Nuestro Catálogo</h2>
+          <div id="products-grid" class="products-grid">
+            <!-- Los productos se inyectan dinámicamente con JS -->
+          </div>
+        </div>
+
+        <!-- Carrito y estados en barra lateral -->
+        <div class="sidebar-section">
+          
+          <!-- Carrito de compras -->
+          <div class="cart-container">
+            <h2>Tu Carrito</h2>
+            <div id="cart-empty-msg">No hay productos seleccionados.</div>
+            <ul id="cart-list" class="cart-list"></ul>
+            <div id="cart-total-container" class="cart-total" style="display: none;">
+              <strong>Total: $<span id="cart-total-value">0</span></strong>
+            </div>
+            <div id="checkout-form" class="checkout-form" style="display: none;">
+              <label for="customer-name">Nombre:</label>
+              <input type="text" id="customer-name" value="Juan Pérez">
+              
+              <label for="customer-address">Dirección de Envío:</label>
+              <input type="text" id="customer-address" value="Av. de Mayo 1234, CABA">
+              
+              <button class="btn-checkout" onclick="processCheckout()">Confirmar Pedido</button>
+            </div>
+          </div>
+
+          <!-- Mis pedidos -->
+          <div class="client-orders-container">
+            <h2>Mis Pedidos</h2>
+            <div id="client-orders-list">
+              <p class="no-orders-msg">No has realizado pedidos aún.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ================= VISTA COMERCIO ================= -->
+    <div id="view-merchant" class="view-section" style="display: none;">
+      <div class="merchant-view">
+        <h2>Panel de Control de Pedidos Recibidos</h2>
+        <div id="merchant-orders-grid" class="orders-grid">
+          <!-- Los pedidos entrantes se inyectan aquí -->
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
